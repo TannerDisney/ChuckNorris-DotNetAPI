@@ -24,11 +24,26 @@ namespace WinFormNorrisAPI
 
         }
 
+        private void BtnQueryAPI_Click(object sender, EventArgs e)
+        {
+            SearchAPIForJoke();
+        }
+
         private async void PopulateCatagories()
         {
             IEnumerable<String> categories = await ChuckNorrisClient.GetCategories();
             CboCategory.DataSource = categories;
             CboCategory.DisplayMember = nameof(categories);
+        }
+
+        private async void SearchAPIForJoke()
+        {
+            Joke joke = await ChuckNorrisClient.GetRandomJoke();
+            DialogResult result = MessageBox.Show(joke.JokeText, "Chuck Norris API Joke", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (result.Equals(MessageBoxButtons.OK))
+            {
+                return;
+            }
         }
     }
 }

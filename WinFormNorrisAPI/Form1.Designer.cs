@@ -51,6 +51,7 @@
             this.BtnQueryAPI.TabIndex = 1;
             this.BtnQueryAPI.Text = "Search";
             this.BtnQueryAPI.UseVisualStyleBackColor = true;
+            this.BtnQueryAPI.Click += new System.EventHandler(this.BtnQueryAPI_Click);
             // 
             // groupBox1
             // 
